@@ -1,6 +1,15 @@
 module.exports = (grunt) ->
   grunt.initConfig
 
+    jade:
+      compile:
+        files: [
+          cwd: "views",
+          src: "**/*.jade",
+          dest: "build",
+          expand: true,
+          ext: ".html" ]
+
     sass:
       app:
         files:
@@ -20,6 +29,10 @@ module.exports = (grunt) ->
           'build/assets/javascript/main.js': ['assets/javascript/**/*.coffee']
 
     watch:
+      jade:
+        files: ['views/**/*.jade']
+        tasks: ['jade', 'notify:watch']
+
       coffee:
         files: ['assets/javascript/**/*.coffee']
         tasks: ['coffeelint', 'coffee', 'notify:watch']
@@ -60,7 +73,7 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-notify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-connect'
