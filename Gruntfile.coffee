@@ -23,7 +23,6 @@ module.exports = (grunt) ->
     coffee:
       options:
         sourceMap: true
-
       app:
         files:
           'build/assets/javascript/main.js': ['assets/javascript/**/*.coffee']
@@ -80,5 +79,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-open'
   grunt.loadNpmTasks 'grunt-coffeelint'
 
-  grunt.registerTask 'default', ['sass', 'coffeelint', 'coffee']
+  grunt.registerTask 'default', ['sass', 'coffeelint', 'coffee', 'copy']
   grunt.registerTask 'server', ['default', 'connect', 'notify:server', 'open:dev', 'watch']
