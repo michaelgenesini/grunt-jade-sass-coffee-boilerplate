@@ -8,6 +8,7 @@ module.exports = (grunt) ->
         files: [
           cwd: "views",
           src: "**/*.jade",
+          expand: true,
           dest: "build",
           ext: ".html" ]
 
